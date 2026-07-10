@@ -1,0 +1,72 @@
+/* custom.css
+   Gaya kustom di luar utility class Tailwind:
+   - smooth scroll & reduced motion
+   - font dasar
+   - efek underline judul section
+   - efek glow mockup gambar
+   - focus ring accessibility
+   - animasi fade-up saat scroll
+*/
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+body {
+  font-family: "Plus Jakarta Sans", ui-sans-serif, system-ui;
+}
+
+.font-display {
+  font-family: "Sora", ui-sans-serif, system-ui;
+}
+
+.mockup-glow {
+  filter: drop-shadow(0 25px 35px rgba(0, 0, 0, 0.35));
+}
+
+:focus-visible {
+  outline: 3px solid #fbc724;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+.fade-up {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s ease;
+}
+
+.fade-up.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Efek kursor berkedip untuk animasi ketik */
+.cursor-blink {
+  border-right: 4px solid #125066; /* Warna disamakan dengan text-navy */
+  padding-right: 4px;
+  animation: blink 0.8s step-end infinite;
+}
+
+@keyframes blink {
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: #125066;
+  }
+}
